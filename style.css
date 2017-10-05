@@ -1,0 +1,32 @@
+
+html, body {
+    height: 100%;
+}
+
+#fixedSearchContainer{
+    height:15rem; position:fixed; background-color: white;
+}
+
+#myBreedCol1{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 25rem;
+}
+
+.btn-circle {
+    width: 3.125rem;
+    height: 3.125rem;
+    padding: 0.625rem 1rem;
+    font-size: 1.125rem;
+    line-height: 1.33;
+    border-radius: 1.5625rem;
+}
+
+#searchSuggestions {
+    display: none;
+}

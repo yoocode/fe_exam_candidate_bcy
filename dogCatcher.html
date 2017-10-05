@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dog Catcher</title>
+    <meta name="description" content="Catch diverse breeds of adorable dogs.">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid bg-primary h-100" id="mainContent">
+        <div class="row fixed-top" id="fixedSearchContainer">
+            <div class="col">
+                <div class="row pt-5" id="appBrandContainer">
+                    <!-- https://getbootstrap.com/docs/4.0/utilities/spacing/ -->
+                    <div class="col-lg px-5">
+                        <h1 class="text-center">Dog Catcher</h1>
+                    </div>
+                </div>
+                <div class="row mt-3" id="searchInputContainer">
+                    <div class="col px-5">
+                        <div class="input-group">
+                            <input id="myBreedSearcher" type="search" class="form-control" placeholder="Find a breed to catch" aria-label="Find a breed to catch"
+                                style="z-index:1031">
+                            <!-- onclick? move it to js? Is it how function is called? -->
+                            <button class="btn btn-outline-dark" onclick="search()" style="z-index:1031">Search</button>
+                            <!-- what this div for? drop down for choosing suggested breedname move style to css? -->
+                            <div class="list-group fixed-top text-capitalize mr-5 p-5" style="margin-top:6.2rem;" id="searchSuggestions">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3" id="randomBreedContainer">
+                    <div class="col px-5">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-outline-dark btn-lg btn-block" onclick="catchRandomBreed()">+ Catch A Random Breed</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- style to css? -->
+        <div class="row" style="margin-top:15rem" id="caughtContainer">
+            <div class="col">
+                <div class="row my-5">
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <h2 class="text-center text-white">Caught Breeds</h2>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-danger" onclick="clearAll()">Clear All</button>
+                    </div>
+                </div>
+                <div class="row mt-3" id="emptyBreedPlaceholderMessage">
+                    <div class="col" id="myNoBreedsCard">
+                        <p class="text-center text-white">There are currently no breeds caught. Search above to catch some!</p>
+                    </div>
+                </div>
+
+                <div class="row mt-3 bg-primary" id="myBreeds">
+
+                    <div class="col" id="myBreedCol1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mx-2 p-3 mb-3" style="display:none;" id="genericBreedCard">
+        <div class="card-body">
+            <button style="position:absolute;top:0;right:0;" type="button" class="btn btn-danger btn-circle" id="deleteBreed">&times;</button>
+            <h4 class="card-title text-capitalize text-center">breed name</h4>
+        </div>
+    </div>
+
+
+    <!-- ajax cdn is required??
+    bootstrap cdn is aboove as well -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+
+    <!-- all the script below can be moved to a js file? -->
+    <script type="text/javascript" src="dogCatcher.js"></script>
+</body>
+
+</html>
