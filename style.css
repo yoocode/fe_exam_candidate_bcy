@@ -16,7 +16,7 @@ html, body {
     margin-top:15rem;
 }
 
-#myBreedCol1{
+#myBreedCol{
     display: flex;
     justify-content: space-around;
     align-items: flex-start;

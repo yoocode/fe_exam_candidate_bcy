@@ -1,3 +1,5 @@
+//remove each image card 
+//show emptyBreedPlaceholderMessage when there is no more image
 var numberOfCaughtBreeds = 0;
 
 $("#deleteEachBreed").click(function () {
@@ -9,29 +11,32 @@ $("#deleteEachBreed").click(function () {
     card.remove();
 });
 
+//retrieve breed list
 var data = '';
 
 $.getJSON("https://dog.ceo/api/breeds/list", function (result) {
     data = result.message;
 });
 
-$(document).on('click', function (e) {//initial stage - no suggestion
+//set initial stage for no suggestion
+$(document).on('click', function (e) {
     $("#searchSuggestions").css("display", "none");
 });
 
-//populate breed name suggestion list (6 max) 
+//Suggestion list (6 max) 
 //wide net by having any letters in the name
 $("#myBreedSearcher").keyup(function () {
     let suggestions = $("#searchSuggestions");
-
     let searchField = $(this).val();
-
-    if (searchField == '') {//when search becomes default
+    //set default search
+    if (searchField == '') {
         suggestions.css("display", "none");
         return;
     }
 
-    let regex = new RegExp(searchField, "i");//i for ignore case
+    //Breed suggestion
+    //regex pattern search with case ignore
+    let regex = new RegExp(searchField, "i");
     let count = 0;
     let newSuggestions = "";
 
@@ -48,59 +53,62 @@ $("#myBreedSearcher").keyup(function () {
     }
 });
 
+//No message when there is image
 function hideemptyBreedPlaceholderMessage() {
     if ($('#emptyBreedPlaceholderMessage').is(":visible")) {
         $('#emptyBreedPlaceholderMessage').css("display", "none");
     }
 }
 
+//catch random breed
+//breed name: use url as a source of the breed name
 function catchRandomBreed() {
     $.getJSON("https://dog.ceo/api/breeds/image/random", function (result) {
         var url = result.message;
 
-        // url in the format: https://dog.ceo/api/img/BREEDNAME/imgURL.jpg)
-        var breedStartIndex = 24;
-        var breedEndIndex = url.indexOf('/', breedStartIndex);
-        var breed = url.substring(breedStartIndex, breedEndIndex);
+        // url format: https://dog.ceo/api/img/BREEDNAME/imgURL.jpg)
+        var breedNameStartIndex = 24;
+        var breedNameEndIndex = url.indexOf('/', breedNameStartIndex);
+        var breedName = url.substring(breedNameStartIndex, breedNameEndIndex);
 
-        addBreedToCollection(breed, result.message);
+        addBreedToCollection(breedName, result.message);
     });
-
 }
 
-function addBreedToCollection(breed, url) {
+//Add breedName and image url
+//use clone method for genericBreedCard element
+//set myBreedSearcher to default
+function addBreedToCollection(breedName, url) {
     var card = $('#genericBreedCard').clone(true, true);//x & breedName
     $("#myBreedSearcher").val('');
 
     if (!url) {
 
-        $.getJSON("https://dog.ceo/api/breed/" + breed + "/images/random", function (result) {
-            addCardProperties(card, breed, result.message);
+        $.getJSON("https://dog.ceo/api/breed/" + breedName + "/images/random", function (result) {
+            addCardProperties(card, breedName, result.message);
         });
     } else {
-        addCardProperties(card, breed, url);//breed = breed name
+        addCardProperties(card, breedName, url);//breed = breed name
     }
     hideemptyBreedPlaceholderMessage();//hide text
 }
 
-function addCardProperties(card, breed, url) {
+//make each card
+function addCardProperties(card, breedName, url) {
     card.prop("id", "breedCard" + numberOfCaughtBreeds++);
     card.css("display", "inline-block");
 
     card.prepend("<img class='card-img-top' src='" + url + "' alt='A cute fluffy pup'>");
 
-    card.find(".card-title")[0].innerHTML = breed;
+    card.find(".card-title")[0].innerHTML = breedName;
 
-    // var nthColumn = "#myBreedCol" + getNextColumn();
-    var nthColumn = "#myBreedCol1";
-
-    // console.log("Appending to " + nthColumn);
-    card.appendTo($(nthColumn));
+    card.appendTo($("#myBreedCol"));
 }
 
+//clear all method
 function clearAll() {
     numberOfCaughtBreeds = 0;
     $('#emptyBreedPlaceholderMessage').css("display", "block");
 
-    $('#myBreedCol1').empty();
+    $('#myBreedCol').empty();
 }
