@@ -1,6 +1,6 @@
 var numberOfCaughtBreeds = 0;
 
-$("#deleteBreed").click(function () {
+$("#deleteEachBreed").click(function () {
     if (--numberOfCaughtBreeds == 0) {
         $('#emptyBreedPlaceholderMessage').css("display", "block");
     }

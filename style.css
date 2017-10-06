@@ -12,6 +12,10 @@ html, body {
     margin-top:6.2rem;
 }
 
+#caughtContainer {
+    margin-top:15rem;
+}
+
 #myBreedCol1{
     display: flex;
     justify-content: space-around;
@@ -23,13 +27,21 @@ html, body {
     width: 25rem;
 }
 
+#genericBreedCard{
+    display:none;
+}
+
 .btn-circle {
-    width: 3.125rem;
-    height: 3.125rem;
-    padding: 0.625rem 1rem;
-    font-size: 1.125rem;
-    line-height: 1.33;
-    border-radius: 1.5625rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+    font-weight: 900;
+}
+
+#deleteEachBreed{
+    position:absolute;
+    top:0;
+    right:0;
 }
 
 #searchSuggestions {
