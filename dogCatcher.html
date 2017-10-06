@@ -7,15 +7,17 @@
     <meta name="description" content="Catch diverse breeds of adorable dogs.">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
-
+    <!-- cute doggy favicon -->
+    <link href="favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
+    <!-- Is container or container-fluid? former is responsive, latter for fixed full width -->
     <div class="container-fluid bg-primary h-100" id="mainContent">
-        <div class="row fixed-top" id="fixedSearchContainer">
+        <div class="row fixed-top" id="SearchContainer">
             <div class="col">
-                <div class="row pt-5" id="appBrandContainer">
+                <div class="row pt-5" id="appNameContainer">
                     <!-- https://getbootstrap.com/docs/4.0/utilities/spacing/ -->
                     <div class="col-lg px-5">
                         <h1 class="text-center">Dog Catcher</h1>
@@ -24,12 +26,11 @@
                 <div class="row mt-3" id="searchInputContainer">
                     <div class="col px-5">
                         <div class="input-group">
-                            <input id="myBreedSearcher" type="search" class="form-control" placeholder="Find a breed to catch" aria-label="Find a breed to catch"
-                                style="z-index:1031">
-                            <!-- onclick? move it to js? Is it how function is called? -->
-                            <button class="btn btn-outline-dark" onclick="search()" style="z-index:1031">Search</button>
-                            <!-- what this div for? drop down for choosing suggested breedname move style to css? -->
-                            <div class="list-group fixed-top text-capitalize mr-5 p-5" style="margin-top:6.2rem;" id="searchSuggestions">
+                            <input id="myBreedSearcher" type="search" class="form-control" placeholder="Find a breed to catch" aria-label="Find a breed to catch">
+                            <!-- onclick here or have callback through js with selector -->
+                            <button class="btn btn-outline-dark" onclick="search()">Search</button>
+                            <!-- what this div for? It is intended for dropdown for choosing suggested breedname -->
+                            <div class="list-group fixed-top text-capitalize mr-5 p-5" id="searchSuggestions">
                             </div>
                         </div>
                     </div>

@@ -3,8 +3,13 @@ html, body {
     height: 100%;
 }
 
-#fixedSearchContainer{
-    height:15rem; position:fixed; background-color: white;
+#SearchContainer{
+    height:15rem; 
+    background-color: white;
+}
+
+#searchSuggestions{
+    margin-top:6.2rem;
 }
 
 #myBreedCol1{
